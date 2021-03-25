@@ -1,0 +1,107 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  --step-color-active: #FF3300;
+  --step-color-disabled: #eeeeee;
+  --progressio-width:33%;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.progress-step-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  max-width: 100%;
+  width: 250px;
+  margin: 15px 0;
+}
+
+.progress-step-container .step-number {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--step-color-disabled);
+  border-radius: 50%;
+  font: 16px consolas;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #eeeeee;
+  z-index: 1;
+  -webkit-transition: border-radius 0.4s ease-in;
+  transition: border-radius 0.4s ease-in;
+  cursor: pointer;
+}
+
+.step-number.active {
+  border: 3px solid var(--step-color-active);
+  color: var(--step-color-active);
+}
+
+.progress-step-container::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 3px;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  background-color: var(--step-color-disabled);
+  z-index: -1;
+}
+
+.step-progression {
+  position: absolute;
+  width: 33%;
+  height: 3px;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  background-color: var(--step-color-active);
+  -webkit-transition: width 0.4s ease-in;
+  transition: width 0.4s ease-in;
+  z-index: 1;
+}
+
+button {
+  margin: 0 5px;
+}
+/*# sourceMappingURL=style.css.map */
