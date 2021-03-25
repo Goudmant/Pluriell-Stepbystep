@@ -1,10 +1,11 @@
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
+const  finishBtn  =  document.getElementById('finishBtn');
 const stepNumbers = document.querySelectorAll(".step-number");
 const stepProgression = document.querySelector("#stepProgression");
 
 let currentStep = 1;
-Update();
+update();
 
 stepNumbers.forEach((step, i) => {
     step.onclick = () => {
@@ -22,6 +23,10 @@ nextBtn.onclick = () => {
     currentStep++;
     update();
 };
+
+finishBtn.addEventListener('click',  ()  =>  {
+	location.reload();
+});
 
 function update() {
     prevBtn.disabled = false;
