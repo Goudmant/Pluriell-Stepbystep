@@ -1,0 +1,212 @@
+<div class="container">            
+    <button class="close"><i class="far fa-times-circle" id="finishBtn" style="color: #FF3300; vertical-align: inherit;"></i></button>
+    <div class="progress-step-container">
+        <div class="step-progression" id="stepProgression"></div>
+        <div class="step-number">1</div>
+        <div class="step-number">2</div>
+        <div class="step-number">3</div>
+        <div class="step-number">4</div>
+    </div>
+    
+
+    <div class="row">
+        <button type="button" id="prevBtn" class="btn btn-outline-danger">Précedent</button>
+        <button type="button" id="nextBtn" class="btn btn-outline-danger">Suivant</button>
+    </div>
+    
+</div>
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+/*body {
+    margin: 0;
+}*/
+:root {
+    --step-color-active: #FF3300;
+    --step-color-disabled: #eeeeee;
+    --progressio-width:33%;
+}
+
+.container {
+    display:flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-step-container{
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    position: relative;
+    max-width: 100%;
+    width:250px;
+    margin:15px 0;
+}
+
+.progress-step-container .step-number {
+    width: 30px;
+    height:30px;
+    border: 3px solid var(--step-color-disabled);
+    border-radius:50%;
+    font: 16px consolas;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    color: #000;
+    background: #eeeeee;
+    z-index: 1;
+    transition: border-radius 0.4s ease-in;
+    cursor:pointer;
+}
+
+.step-number.active {
+    border: 3px solid var(--step-color-active);
+    color: var(--step-color-active);
+}
+
+.progress-step-container::before {
+    position:absolute;
+    content: "";
+    width:100%;
+    height:3px;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    background-color: var(--step-color-disabled);
+    z-index: -1;
+}
+
+.step-progression {
+    position:absolute;
+    width:33%;
+    height: 3px;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    background-color: var(--step-color-active);
+    transition: width 0.4s ease-in;
+    z-index: 1;
+}
+
+button {
+    margin: 0 5px; 
+}
+
+----------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./main.css">
+    <script src="./script.js" defer></script>
+    <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/node_modules/shepherd.js/dist/css/shepherd-theme-arrows.css" />
+    
+    <title>Step by step</title>
+</head>
+<body>
+    <aside>
+        <div class="secondary-sidebar" data-init="secondary-sidebar">
+            <div class="title-bar uk-flex uk-flex-middle">
+                <a href="#">Logo</a>
+                <ul>
+                    <li><a href="#">Projets</a></li>
+                    <li><a href="#">Tâches</a></li>
+                    <li><a href="#">Clients</a></li>
+                    <li><a href="#">Intervenants</a></li>
+                    <li><a href="#">Suivi des prestations</a></li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <aside class="header-inner col-12" style="width: 100%; background-color: #FFFFFF;">
+        <ul>
+            <li><input href="#"></input></li>
+            <li><i class="fas fa-stopwatch"></i></li>
+            <li><i class="fas fa-user-tie"></i></li>
+            <li><i class="fas fa-search"></i></li>
+            <li><i class="fas fa-cog"></i></li>
+            <li><i class="fas fa-bell"></i></li>
+        </ul>
+    </aside>
+    <!--<div class="container">            
+        <button class="close"><i class="far fa-times-circle" id="finishBtn" style="color: #FF3300; vertical-align: inherit;"></i></button>
+        <div class="progress-step-container">
+            <div class="step-progression" id="stepProgression"></div>
+            <div class="step-number">1</div>
+            <div class="step-number">2</div>
+            <div class="step-number">3</div>
+            <div class="step-number">4</div>
+        </div>
+        
+    
+        <div class="row">
+            <button type="button" id="prevBtn" class="btn btn-outline-danger">Précedent</button>
+            <button type="button" id="nextBtn" class="btn btn-outline-danger">Suivant</button>
+        </div>
+        
+    </div>-->
+
+    <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/node_modules/shepherd.js/dist/js/shepherd.min.js"></script>
+
+    <script>
+    
+        const tour = new Shepherd.Tour({
+            defaults: {
+                classes: 'shepherd-theme-arrows'
+            }
+        });
+
+        tour.addStep('example-step', {
+            text: 'This is where you will learn about us.',
+            attachTo: '.first-bottom',
+            buttons: [
+                {
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        tour.addStep('example-step2', {
+            text: 'This is a side navigation, duh!',
+            attachTo: 'fas fa-user-tie-bottom',
+            buttons: [
+                {
+                    text: 'Next',
+                    action: tour.next
+                }
+            ]
+        });
+
+        tour.addStep('example-step3', {
+        text: 'This is the end of your tour bro',
+        attachTo: 'h1 bottom',
+        buttons: [
+            { 
+            text: 'Get this outta here',
+            action: tour.next
+            }
+        ]
+        });
+
+        tour.start()
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "Pluriell-Stepbystep",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "shepherd.js": "^8.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Goudmant/Pluriell-Stepbystep.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Goudmant/Pluriell-Stepbystep/issues"
+  },
+  "homepage": "https://github.com/Goudmant/Pluriell-Stepbystep#readme"
+}
